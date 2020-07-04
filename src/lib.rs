@@ -1,6 +1,7 @@
 use indicatif::{ProgressBar, ProgressStyle};
 use std::{thread, time};
 use console::{Term, Style};
+use notifica::notify;
 
 // Basic pomodoro timer
 pub fn pomodoro(work: i32, rest: i32) {
@@ -15,8 +16,10 @@ pub fn pomodoro(work: i32, rest: i32) {
     term.clear_screen().expect("Could not clear screen.");
 
     loop {
+        notify("🍅", "Time to work.");
         term.clear_screen().expect("Could not clear screen.");
         user_info(true, work_count, rest_count, work_secs, rest_secs);
+
         // Work timer
         let work_bar = ProgressBar::new(work_secs as u64);
         work_bar.set_style(ProgressStyle::default_bar()
@@ -28,6 +31,7 @@ pub fn pomodoro(work: i32, rest: i32) {
         }
         work_count += 1;
 
+        notify("🍅", "Time to rest.");
         term.clear_screen().expect("Could not clear screen.");
         user_info(false, work_count, rest_count, work_secs, rest_secs);
 
