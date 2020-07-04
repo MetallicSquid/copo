@@ -2,7 +2,7 @@
 name = "copo"
 version = "0.1.0"
 authors = ["MetallicSquid"]
-license = "MIT or Apache-2.0"
+license = "Apache-2.0"
 description = "A command line pomodoro timer"
 readme = "README.md"
 homepage = "https://github.com/MetallicSquid/copo"
