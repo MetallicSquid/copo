@@ -5,12 +5,14 @@ use exitfailure::ExitFailure;
 // User input
 #[derive(StructOpt)]
 struct Cli {
+    /// Duration of work timer in minutes.
     work: String,
+    /// Duration of rest timer in minutes.
     rest: String,
 }
 
 fn main() -> Result<(), ExitFailure>{
-    // Convert duration strings to integer
+    // Parse through user inputs and flags
     let args = Cli::from_args();
     let work = args.work.trim().parse::<i32>()
         .with_context(|_| format!("Could not read work duration `{}`", args.work))?;

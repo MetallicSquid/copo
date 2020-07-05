@@ -16,11 +16,11 @@ pub fn pomodoro(work: i32, rest: i32) {
     term.clear_screen().expect("Could not clear screen.");
 
     loop {
+        // Work timer
         notify("🍅", "Time to work.");
         term.clear_screen().expect("Could not clear screen.");
         user_info(true, work_count, rest_count, work_secs, rest_secs);
 
-        // Work timer
         let work_bar = ProgressBar::new(work_secs as u64);
         work_bar.set_style(ProgressStyle::default_bar()
                            .template("{spinner:.red} [{elapsed_precise}] [{bar:60.orange/red}]")
@@ -31,11 +31,11 @@ pub fn pomodoro(work: i32, rest: i32) {
         }
         work_count += 1;
 
+        // Rest timer
         notify("🍅", "Time to rest.");
         term.clear_screen().expect("Could not clear screen.");
         user_info(false, work_count, rest_count, work_secs, rest_secs);
 
-        // Rest timer
         let rest_bar = ProgressBar::new(rest_secs as u64);
         rest_bar.set_style(ProgressStyle::default_bar()
                            .template("{spinner:.red} [{elapsed_precise}] [{bar:60.orange/red}]")
