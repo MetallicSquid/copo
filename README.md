@@ -1,11 +1,11 @@
 # copo
-A **co**mmand line **po**modoro timer written in Rust.
+A **co**mmand line **Po**modoro timer written in Rust.
 
 ## Features
  *  Fast.
  *  Simple.
  *  Offline.
- 
+
 ## Installation
 Via cargo;
 ```
