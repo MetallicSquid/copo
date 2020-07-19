@@ -13,7 +13,7 @@ cargo install copo
 ```
 
 ## Screenshot
-...
+![copo example](example.png)
 
 ## Usage
 ```
