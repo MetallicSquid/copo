@@ -3,9 +3,9 @@ A **co**mmand line **Po**modoro timer written in Rust.
 More information about this project can be found [here](https://gcmacneil.com/copo.html).
 
 ## Features
- *  Fast.
- *  Simple.
- *  Offline.
+ *  Fast
+ *  Simple
+ *  Offline
 
 ## Installation
 Via cargo;
