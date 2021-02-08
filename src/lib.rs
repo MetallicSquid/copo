@@ -1,7 +1,8 @@
+use console::{Style, Term};
 use indicatif::{ProgressBar, ProgressStyle};
 use std::{thread, time};
-use console::{Term, Style};
-use notifica::notify;
+extern crate mac_notification_sys;
+use mac_notification_sys::*;
 
 // Basic pomodoro timer
 pub fn pomodoro(work: i32, rest: i32) {
@@ -17,14 +18,17 @@ pub fn pomodoro(work: i32, rest: i32) {
 
     loop {
         // Work timer
-        notify("🍅", "Time to work.");
+        send_notification("COPO", &None, "🍅 Timet to work.", &None).unwrap();
+
         term.clear_screen().expect("Could not clear screen.");
         user_info(true, work_count, rest_count, work_secs, rest_secs);
 
         let work_bar = ProgressBar::new(work_secs as u64);
-        work_bar.set_style(ProgressStyle::default_bar()
-                           .template("{spinner:.red} [{elapsed_precise}] [{bar:60.orange/red}]")
-                           .progress_chars("#🍅-"));
+        work_bar.set_style(
+            ProgressStyle::default_bar()
+                .template("{spinner:.red} [{elapsed_precise}] [{bar:60.orange/red}]")
+                .progress_chars("#🍅-"),
+        );
         for _i in 0..work_secs {
             work_bar.inc(1);
             thread::sleep(time::Duration::from_secs(1));
@@ -32,14 +36,16 @@ pub fn pomodoro(work: i32, rest: i32) {
         work_count += 1;
 
         // Rest timer
-        notify("🍅", "Time to rest.");
+        send_notification("COPO", &None, "🍅 Timet to rest.", &None).unwrap();
         term.clear_screen().expect("Could not clear screen.");
         user_info(false, work_count, rest_count, work_secs, rest_secs);
 
         let rest_bar = ProgressBar::new(rest_secs as u64);
-        rest_bar.set_style(ProgressStyle::default_bar()
-                           .template("{spinner:.red} [{elapsed_precise}] [{bar:60.orange/red}]")
-                           .progress_chars("#🍅-"));
+        rest_bar.set_style(
+            ProgressStyle::default_bar()
+                .template("{spinner:.red} [{elapsed_precise}] [{bar:60.orange/red}]")
+                .progress_chars("#🍅-"),
+        );
         for _i in 0..rest_secs {
             rest_bar.inc(1);
             thread::sleep(time::Duration::from_secs(1));

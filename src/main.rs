@@ -1,6 +1,6 @@
-use structopt::StructOpt;
-use failure::ResultExt;
 use exitfailure::ExitFailure;
+use failure::ResultExt;
+use structopt::StructOpt;
 
 // User input
 #[derive(StructOpt)]
@@ -11,12 +11,18 @@ struct Cli {
     rest: String,
 }
 
-fn main() -> Result<(), ExitFailure>{
+fn main() -> Result<(), ExitFailure> {
     // Parse through user inputs and flags
     let args = Cli::from_args();
-    let work = args.work.trim().parse::<i32>()
+    let work = args
+        .work
+        .trim()
+        .parse::<i32>()
         .with_context(|_| format!("Could not read work duration `{}`", args.work))?;
-    let rest = args.rest.trim().parse::<i32>()
+    let rest = args
+        .rest
+        .trim()
+        .parse::<i32>()
         .with_context(|_| format!("Could not read rest duration `{}`", args.rest))?;
 
     // Run Pomodoro timer
