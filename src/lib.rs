@@ -18,7 +18,7 @@ pub fn pomodoro(work: i32, rest: i32) {
 
     loop {
         // Work timer
-        send_notification("COPO", &None, "🍅 Timet to work.", &None).unwrap();
+        send_notification("COPO", &None, "🍅 Time to work.", &None).unwrap();
 
         term.clear_screen().expect("Could not clear screen.");
         user_info(true, work_count, rest_count, work_secs, rest_secs);
@@ -36,7 +36,7 @@ pub fn pomodoro(work: i32, rest: i32) {
         work_count += 1;
 
         // Rest timer
-        send_notification("COPO", &None, "🍅 Timet to rest.", &None).unwrap();
+        send_notification("COPO", &None, "🍅 Time to rest.", &None).unwrap();
         term.clear_screen().expect("Could not clear screen.");
         user_info(false, work_count, rest_count, work_secs, rest_secs);
 
