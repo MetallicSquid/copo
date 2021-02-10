@@ -29,6 +29,9 @@ ARGS:
     <work>    Duration of work timer in minutes
     <rest>    Duration of rest timer in minutes
 ```
+### With thanks to...
+ * [DanielRivasMD](https://github.com/DanielRivasMD) -> System agnostic notifications.
+
 
 ## License:
 This project is licensed under the [Apache-2.0](LICENSE.md) license.
