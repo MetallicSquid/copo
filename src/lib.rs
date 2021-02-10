@@ -1,7 +1,7 @@
 use indicatif::{ProgressBar, ProgressStyle};
 use std::{thread, time};
 use console::{Term, Style};
-use notifica::notify;
+use notify_rust::Notification;
 
 // Basic pomodoro timer
 pub fn pomodoro(work: i32, rest: i32) {
@@ -17,7 +17,11 @@ pub fn pomodoro(work: i32, rest: i32) {
 
     loop {
         // Work timer
-        notify("🍅", "Time to work.");
+        Notification::new()
+            .summary("Copo")
+            .body("Time to work.")
+            .icon("🍅")
+            .show().expect("Could not present work notification.");
         term.clear_screen().expect("Could not clear screen.");
         user_info(true, work_count, rest_count, work_secs, rest_secs);
 
@@ -32,7 +36,11 @@ pub fn pomodoro(work: i32, rest: i32) {
         work_count += 1;
 
         // Rest timer
-        notify("🍅", "Time to rest.");
+        Notification::new()
+            .summary("Copo")
+            .body("Time to rest.")
+            .icon("🍅")
+            .show().expect("Could not present rest notification.");
         term.clear_screen().expect("Could not clear screen.");
         user_info(false, work_count, rest_count, work_secs, rest_secs);
 
